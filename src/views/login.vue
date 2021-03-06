@@ -44,7 +44,12 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           axios.post('http://localhost:8081/user/login',_this.ruleForm).then(function (resp){
-            console.log(resp)
+            if(!resp.data.success){
+            alert("失败")
+            }else {
+              console.log(resp),
+              alert("成功")
+            }
         })
         }else {
           console.log('error submit!!');
